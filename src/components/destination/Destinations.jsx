@@ -1,0 +1,150 @@
+import Header from '../Header/Header'
+import styled from 'styled-components'
+import { destinations } from '../../assets/data/data.json'
+import { useState } from 'react'
+
+const DestinationsContainer = styled.div`
+height: 100vh;
+background-image: url('/destination/background-destination-desktop.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+
+
+.title {
+  font-family: var(--ff-barlow-condensed);
+font-weight: 400;
+font-size: 28px;
+line-height: 34px;
+letter-spacing: 4.725px;
+text-transform: uppercase;
+color: var(--white-color);
+margin: 4.76rem 0 0 10.25rem;
+}
+
+.span-title {
+  font-weight: 700;
+  opacity: 0.25;
+  margin-right: 28px;
+}
+
+.destination-container {
+  max-width: 1047px;
+  display: flex;
+  margin: 64px auto 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.data-planet {
+  max-width: 445px;
+
+  & h1 {
+    color: var(--white-color);
+    font-family: var(--ff-bellefair-regular);
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 6.25rem;
+    line-height: 115px;
+    margin-top: 2.3125rem;
+  }
+  & p {
+    font-family: var(--ff-barlow-regular);
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 32px;
+    color: var(--secondary-color);
+    margin-top: 14px;
+  }
+
+  & .line {
+    width: 100%;
+    border: 1px solid #979797;
+    margin: 3.375rem 0 1.75rem;
+
+  }
+}
+
+.info-travel {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  gap: 79px;
+
+
+  & li {
+    font-family: var(--ff-bellefair-regular);
+    font-weight: 400;
+    font-size: 1.75rem;
+    line-height: 32px;
+    text-transform: uppercase;
+    color: var(--white-color);
+
+    & span {
+      font-family: var(--ff-barlow-condensed);
+      font-size: 0.875rem;
+      line-height: 17px;
+      letter-spacing: 2.3625px;
+      text-transform: uppercase;
+      color: var(--secondary-color);
+      display: block;
+      margin-bottom: 12px;
+    }
+  }
+}
+
+
+
+.button-container button {
+  border: none;
+  background-color: transparent;
+  color: var(--secondary-color);
+  font-family: var(--ff-barlow-condensed);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 2.7px;
+  text-transform: uppercase;
+  padding: 0 0 12px;
+  margin-right: 35px;
+  cursor: pointer;
+}
+
+`
+
+const Destinations = () => {
+  const [planets] = useState(destinations)
+  const [value, setValue] = useState(0)
+
+  const { name, images, description, distance, travel } = planets[value]
+  return (
+    <DestinationsContainer>
+      <Header />
+      <p className='title'><span className='span-title'>01</span> pick your destination</p>
+      <section className='destination-container'>
+        <article>
+          <img src={images.png} alt={name} />
+        </article>
+        <article className='data-planet'>
+          <div className='button-container'>
+            {
+            planets.map((items, index) => (
+
+              <button key={index} onClick={() => setValue(index)}>{items.name}</button>
+            ))
+          }
+          </div>
+
+          <h1>{name}</h1>
+          <p>{description}</p>
+          <div className='line' />
+          <ul className='info-travel'>
+            <li><span>AVG. DISTANCE </span>{distance}</li>
+            <li><span>EST. TRAVEL TIME</span>{travel}</li>
+          </ul>
+        </article>
+      </section>
+    </DestinationsContainer>
+  )
+}
+
+export default Destinations

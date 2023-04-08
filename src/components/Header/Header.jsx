@@ -1,71 +1,56 @@
 import React from 'react'
 import Logo from '../../assets/shared/logo.svg'
 import styled from 'styled-components'
+import NavBar from '../navBar/NavBar'
 
 const HeaderStyled = styled.header`
-display: flex;
-font-size: 16px;
-justify-content: space-between;
-align-items: center;
-padding: 1.5rem 0 0 2rem;
-
-& .line {
-  position: relative;
-  left: 90px;
-  z-index: 10;
-  height: 1px;
-  width: 473px;
-  background-color: white;
-  opacity: 0.25;
-}
-`
-
-const NavBar = styled.nav`
-font-family: var(--nav-font);
-font-size: 1rem;
-letter-spacing: 2.7px;
-color: white;
-max-width: 830px;
-background-color: rgba(255, 255, 255, 0.04);
-backdrop-filter: blur(2px);
-padding:0 1rem;
-
-  
-& ul {
-  list-style-type: none;
   display: flex;
-  justify-content: space-around;
-  gap: 3.5rem;
-  margin:0 5rem ;
-  padding:1.5rem 1.5rem 0;
+  font-size: 16px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0 0 2rem;
 
-  & li {
-    cursor: pointer;
-    border-bottom: 3px solid white;
-    padding-bottom: 1.5rem;
+  .line {
+    position: relative;
+    left: 90px;
+    z-index: 10;
+    height: 1px;
+    width: 473px;
+    background-color: white;
+    opacity: 0.25;
+  }
 
-    & span {
-      margin-right: 5px;
+  @media (max-width: 1115px) {
+    padding: 0;
+    .line {
+      display: none;
+    }
+
+    .logo-container {
+      display: block;
+      width: 48px;
+      height: 48px;
+      margin: 24px 0 0 36px;
     }
   }
-}
+
+  @media (max-width: 550px) {
+    padding: 24px;
+
+    .logo-container {
+      margin: 0;
+    }
+  }
 `
 
-function Header () {
+// Para activar el menu hamburguesa, lo que necesito es: al darle click, este dispara un evento que activa una funcion que cambia un estado establecido con un strig que simbolizan las clases que cambian de acuerdo al click realizado.
+
+function Header ({ data }) {
   return (
     <HeaderStyled>
-      <div>
-        <img src={Logo} alt='logo de la aplicacion' />
-      </div>
+      <img className='logo-container' src={Logo} alt='logo de la aplicacion' />
       <div className='line' />
-      <NavBar>
-        <ul>
-          <li><span>00</span>HOME</li>
-          <li><span>01</span>DESTINATION</li>
-          <li><span>02</span>CREW</li>
-          <li><span>03</span>TECHNOLOGY</li>
-        </ul>
-      </NavBar>
+      <NavBar />
     </HeaderStyled>
   )
 }
