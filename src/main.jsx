@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ErrorPage from './components/errorpage/ErrorPage'
 import './index.css'
 import Destinations from './components/destination/Destinations'
+import Crew from './components/crew/Crew'
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: '/destinations',
     element: <Destinations />
+  },
+  {
+    path: '/crew',
+    element: <Crew />
   }
 ])
 

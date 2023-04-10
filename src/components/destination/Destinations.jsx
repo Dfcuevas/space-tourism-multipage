@@ -170,7 +170,64 @@ margin: 4.76rem 0 0 10.25rem;
 }
 
 @media (max-width: 550px) {
-  
+
+  height: 100vh;
+  background-image: url('/destination/background-destination-mobile.jpg');
+
+
+  .title {
+    text-align: center;
+    margin: 0 0 2rem 0;
+    font-size: 1rem;
+    line-height: 19px;
+    letter-spacing: 2.7px;
+  }
+
+  .destination-container {
+    margin-top: 32px;
+  }
+
+  .destination-container img {
+    width: 170px;
+    height: 170px;
+  }
+
+  .button-container {
+    margin-top: 26px;
+    margin-bottom: 0px;
+  }
+
+  .button-container button {
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 2.3625px;
+  }
+
+  .data-planet h1 {
+    font-size: 3.5rem;
+    line-height: 4rem;
+    margin-top: 20px;
+  }
+
+  .data-planet p {
+    max-width: 327px;
+    font-size: 1rem;
+    line-height: 25px;
+    font-weight: 400;
+  }
+
+  .data-planet .line {
+    margin: 2rem 0;
+  }
+
+  .info-travel {
+    flex-direction: column;
+    
+  }
+
+  .info-travel {
+    gap: 32px;
+  }
 }
 `
 
