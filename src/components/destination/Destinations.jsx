@@ -11,7 +11,7 @@ background-size: cover;
 
 
 .title {
-  font-family: var(--ff-barlow-condensed);
+font-family: var(--ff-barlow-condensed);
 font-weight: 400;
 font-size: 28px;
 line-height: 34px;
@@ -92,6 +92,9 @@ margin: 4.76rem 0 0 10.25rem;
   }
 }
 
+.button-container button.active {
+  border-bottom: 3px solid var(--white-color);
+}
 
 
 .button-container button {
@@ -107,8 +110,68 @@ margin: 4.76rem 0 0 10.25rem;
   padding: 0 0 12px;
   margin-right: 35px;
   cursor: pointer;
+  border-bottom: 3px solid transparent;
 }
 
+.button-container button:hover {
+  border-bottom: 3px solid var(--secondary-color);
+}
+
+@media (max-width: 1115px) {
+  height: auto;
+  background-image: url('/destination/background-destination-tablet.jpg');
+  .title {
+    margin-left: 2.4rem;
+    font-size: 1.25rem;
+    line-height: 24px;
+    letter-spacing: 3.375px;
+  }
+
+  .span-title {
+    margin-right: 19px;
+  }
+
+  .destination-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .destination-container img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .data-planet {
+    max-width: 575px;
+  }
+
+  .data-planet p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 28px;
+    text-align: center;
+  }
+
+  .button-container {
+    max-width: 300px;
+    margin: 53px auto 32px;
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+  .button-container button {
+    margin-right: 0;
+  }
+
+  .info-travel {
+    justify-content: space-evenly;
+  }
+}
+
+@media (max-width: 550px) {
+  
+}
 `
 
 const Destinations = () => {
@@ -116,6 +179,7 @@ const Destinations = () => {
   const [value, setValue] = useState(0)
 
   const { name, images, description, distance, travel } = planets[value]
+
   return (
     <DestinationsContainer>
       <Header />
@@ -129,7 +193,7 @@ const Destinations = () => {
             {
             planets.map((items, index) => (
 
-              <button key={index} onClick={() => setValue(index)}>{items.name}</button>
+              <button className={value === index && 'active'} key={index} onClick={() => setValue(index)}>{items.name}</button>
             ))
           }
           </div>

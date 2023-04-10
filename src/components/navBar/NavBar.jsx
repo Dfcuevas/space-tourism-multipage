@@ -114,8 +114,6 @@ const NavBar = ({ data }) => {
   const [hamburgernMenu, setHamburgernMenuMenu] = useState('active')
   const [navBar, setNavBar] = useState('hidden')
 
-  /* console.log(data) */
-
   const handleChange = (e) => {
     const textoInterno = e.target.innerText
     setActive(textoInterno)
