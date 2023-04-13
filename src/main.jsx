@@ -6,6 +6,7 @@ import ErrorPage from './components/errorpage/ErrorPage'
 import './index.css'
 import Destinations from './components/destination/Destinations'
 import Crew from './components/crew/Crew'
+import Technology from './components/technology/Technology'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: '/crew',
     element: <Crew />
+  },
+  {
+    path: '/tech',
+    element: <Technology />
   }
 ])
 
