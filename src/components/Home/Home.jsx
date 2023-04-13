@@ -5,7 +5,7 @@ import ExploreButton from '../explore-button/ExploreButton'
 
 const Container = styled.div`
   margin: 0;
-  background-image: url("../../../public/background-home-desktop.jpg");
+  background-image: url("/background-home-desktop.jpg");
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
@@ -48,7 +48,7 @@ const Container = styled.div`
   }
 
   @media (max-width: 1115px) {
-    background-image: url("../../../public/background-home-tablet.jpg");
+    background-image: url("/background-home-tablet.jpg");
     background-position: center;
 
     .data-container {

@@ -250,7 +250,7 @@ const Destinations = () => {
             {
             planets.map((items, index) => (
 
-              <button className={value === index && 'active'} key={index} onClick={() => setValue(index)}>{items.name}</button>
+              <button className={value === index ? 'active' : undefined} key={index} onClick={() => setValue(index)}>{items.name}</button>
             ))
           }
           </div>
