@@ -167,7 +167,6 @@ const NavBar = ({ data }) => {
               <>
                 <NavLink
                   to='/'
-                  onClick={(e) => handleChange(e)}
                   className={
                     ({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active-element' : ''
                 }
@@ -176,11 +175,7 @@ const NavBar = ({ data }) => {
                 </NavLink>
                 <NavLink
                   to='/destinations'
-                  onClick={handleChange}
                   className={
-                  /* active === 'DESTINATION' || active === '01DESTINATION'
-                    ? 'active-element'
-                    : '' */
                     ({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active-element' : ''
                 }
                 >
@@ -188,7 +183,6 @@ const NavBar = ({ data }) => {
                 </NavLink>
                 <NavLink
                   to='/crew'
-                  onClick={handleChange}
                   className={
                     ({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active-element' : ''
                 }
@@ -197,7 +191,6 @@ const NavBar = ({ data }) => {
                 </NavLink>
                 <NavLink
                   to='/tech'
-                  onClick={handleChange}
                   className={
                     ({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active-element' : ''
                 }
