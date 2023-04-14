@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import React, { useState } from 'react'
 import closeIcon from '../../assets/shared/icon-close.svg'
 import hamburgerIcon from '../../assets/shared/icon-hamburger.svg'
+import { NavLink } from 'react-router-dom'
 
 const Nav = styled.nav`
   font-family: var(--ff-barlow-condensed);
@@ -13,7 +14,7 @@ const Nav = styled.nav`
   padding: 0 1rem;
   position: relative;
 
-  & ul {
+  ul {
     list-style-type: none;
     display: flex;
     justify-content: space-around;
@@ -21,10 +22,12 @@ const Nav = styled.nav`
     margin: 0 5rem;
     padding: 1.5rem 1.5rem 0;
 
-    & li {
+    & a {
       cursor: pointer;
       padding-bottom: 1.5rem;
       border-bottom: 3px solid transparent;
+      color: var(--white-color);
+      text-decoration: none;
 
       &:hover {
         border-bottom: 3px solid var(--hover-button-color);
@@ -130,7 +133,6 @@ const NavBar = ({ data }) => {
   }
 
   return (
-
     <>
       <HamburgerMenu
         onClick={activeNav}
@@ -152,51 +154,58 @@ const NavBar = ({ data }) => {
           {data
             ? (
                 data.map((element, id) => (
-                  <li key={id} onClick={(e) => handleChange(e)} className={active === element ? 'active-element' : ''}>{element.toUpperCase()}</li>
+                  <li
+                    key={id}
+                    onClick={(e) => handleChange(e)}
+                    className={active === element ? 'active-element' : ''}
+                  >
+                    {element.toUpperCase()}
+                  </li>
                 ))
               )
             : (
               <>
-                <li
+                <NavLink
+                  to='/'
                   onClick={(e) => handleChange(e)}
                   className={
-              active === 'HOME' || active === '00HOME' ? 'active-element' : ''
-            }
+                    ({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active-element' : ''
+                }
                 >
                   <span>00</span>HOME
-                </li>
-                <li
+                </NavLink>
+                <NavLink
+                  to='/destinations'
                   onClick={handleChange}
                   className={
-              active === 'DESTINATION' || active === '01DESTINATION'
-                ? 'active-element'
-                : ''
-            }
+                  /* active === 'DESTINATION' || active === '01DESTINATION'
+                    ? 'active-element'
+                    : '' */
+                    ({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active-element' : ''
+                }
                 >
                   <span>01</span>DESTINATION
-                </li>
-                <li
+                </NavLink>
+                <NavLink
+                  to='/crew'
                   onClick={handleChange}
                   className={
-              active === 'CREW' || active === '02CREW' ? 'active-element' : ''
-            }
+                    ({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active-element' : ''
+                }
                 >
                   <span>02</span>CREW
-                </li>
-                <li
+                </NavLink>
+                <NavLink
+                  to='/tech'
                   onClick={handleChange}
                   className={
-              active === 'TECHNOLOGY' || active === '03TECHNOLOGY'
-                ? 'active-element'
-                : ''
-            }
+                    ({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active-element' : ''
+                }
                 >
                   <span>03</span>TECHNOLOGY
-                </li>
+                </NavLink>
               </>
-
               )}
-
         </ul>
       </Nav>
     </>
