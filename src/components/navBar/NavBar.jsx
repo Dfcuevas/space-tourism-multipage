@@ -1,8 +1,8 @@
-import styled from 'styled-components'
-import React, { useState } from 'react'
-import closeIcon from '../../assets/shared/icon-close.svg'
-import hamburgerIcon from '../../assets/shared/icon-hamburger.svg'
-import { NavLink } from 'react-router-dom'
+import styled from "styled-components";
+import React, { useState } from "react";
+import closeIcon from "../../assets/shared/icon-close.svg";
+import hamburgerIcon from "../../assets/shared/icon-hamburger.svg";
+import { NavLink } from "react-router-dom";
 
 const Nav = styled.nav`
   font-family: var(--ff-barlow-condensed);
@@ -11,7 +11,6 @@ const Nav = styled.nav`
   color: white;
   max-width: 830px;
   background-color: var(--white-blur);
-  padding: 0 1rem;
   position: relative;
 
   ul {
@@ -93,7 +92,7 @@ const Nav = styled.nav`
       }
     }
   }
-`
+`;
 
 const HamburgerMenu = styled.div`
   display: none;
@@ -110,27 +109,27 @@ const HamburgerMenu = styled.div`
   &.hidden {
     display: none;
   }
-`
+`;
 
 const NavBar = ({ data }) => {
-  const [active, setActive] = useState('')
-  const [hamburgernMenu, setHamburgernMenuMenu] = useState('active')
-  const [navBar, setNavBar] = useState('hidden')
+  const [active, setActive] = useState("");
+  const [hamburgernMenu, setHamburgernMenuMenu] = useState("active");
+  const [navBar, setNavBar] = useState("hidden");
 
   const handleChange = (e) => {
-    const textoInterno = e.target.innerText
-    setActive(textoInterno)
-  }
+    const textoInterno = e.target.innerText;
+    setActive(textoInterno);
+  };
 
   const activeNav = () => {
-    setHamburgernMenuMenu('hidden')
-    setNavBar('active')
-  }
+    setHamburgernMenuMenu("hidden");
+    setNavBar("active");
+  };
 
   const activeCloseButton = () => {
-    setNavBar('hidden')
-    setHamburgernMenuMenu('active')
-  }
+    setNavBar("hidden");
+    setHamburgernMenuMenu("active");
+  };
 
   return (
     <>
@@ -138,7 +137,7 @@ const NavBar = ({ data }) => {
         onClick={activeNav}
         className={`${hamburgernMenu} menu-icon`}
       >
-        <img src={hamburgerIcon} alt='icono del menu hamburguesa' />
+        <img src={hamburgerIcon} alt="icono del menu hamburguesa" />
       </HamburgerMenu>
 
       <Nav className={`${navBar}`}>
@@ -146,63 +145,61 @@ const NavBar = ({ data }) => {
           <img
             onClick={activeCloseButton}
             src={closeIcon}
-            alt='icono de cierre del menu hamburguesa'
+            alt="icono de cierre del menu hamburguesa"
           />
         </div>
 
         <ul>
-          {data
-            ? (
-                data.map((element, id) => (
-                  <li
-                    key={id}
-                    onClick={(e) => handleChange(e)}
-                    className={active === element ? 'active-element' : ''}
-                  >
-                    {element.toUpperCase()}
-                  </li>
-                ))
-              )
-            : (
-              <>
-                <NavLink
-                  to='/'
-                  className={
-                    ({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active-element' : ''
+          {data ? (
+            data.map((element, id) => (
+              <li
+                key={id}
+                onClick={(e) => handleChange(e)}
+                className={active === element ? "active-element" : ""}
+              >
+                {element.toUpperCase()}
+              </li>
+            ))
+          ) : (
+            <>
+              <NavLink
+                to="/"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active-element" : ""
                 }
-                >
-                  <span>00</span>HOME
-                </NavLink>
-                <NavLink
-                  to='/destinations'
-                  className={
-                    ({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active-element' : ''
+              >
+                <span>00</span>HOME
+              </NavLink>
+              <NavLink
+                to="/destinations"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active-element" : ""
                 }
-                >
-                  <span>01</span>DESTINATION
-                </NavLink>
-                <NavLink
-                  to='/crew'
-                  className={
-                    ({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active-element' : ''
+              >
+                <span>01</span>DESTINATION
+              </NavLink>
+              <NavLink
+                to="/crew"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active-element" : ""
                 }
-                >
-                  <span>02</span>CREW
-                </NavLink>
-                <NavLink
-                  to='/tech'
-                  className={
-                    ({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active-element' : ''
+              >
+                <span>02</span>CREW
+              </NavLink>
+              <NavLink
+                to="/tech"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active-element" : ""
                 }
-                >
-                  <span>03</span>TECHNOLOGY
-                </NavLink>
-              </>
-              )}
+              >
+                <span>03</span>TECHNOLOGY
+              </NavLink>
+            </>
+          )}
         </ul>
       </Nav>
     </>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

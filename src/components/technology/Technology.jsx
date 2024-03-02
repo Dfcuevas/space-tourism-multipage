@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import { technology } from '../../assets/data/data.json'
-import Header from '../Header/Header'
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import { technology } from "../../assets/data/data.json";
+import Header from "../Header/Header";
 
 const TechContainer = styled.main`
   height: 100vh;
@@ -100,7 +100,6 @@ const TechContainer = styled.main`
   }
 
   @media (max-width: 1115px) {
-
     background-image: url(/technology/background-technology-tablet.jpg);
     .title {
       font-size: 20px;
@@ -137,20 +136,19 @@ const TechContainer = styled.main`
 
     .tech-data h2 {
       margin-bottom: 1rem;
-  }
+    }
 
-  .tech-data h1 {
-    font-size: 2.5rem;
-    line-height: 2.875rem;
-  }
+    .tech-data h1 {
+      font-size: 2.5rem;
+      line-height: 2.875rem;
+    }
 
-  .tech-data p {
- 
-    font-size: 1rem;
-    line-height: 1.75rem;
-    color: var(--secondary-color);
-    max-width: 444px;
-  }
+    .tech-data p {
+      font-size: 1rem;
+      line-height: 1.75rem;
+      color: var(--secondary-color);
+      max-width: 444px;
+    }
 
     .tech-btn {
       flex-direction: row;
@@ -160,18 +158,17 @@ const TechContainer = styled.main`
     }
 
     .tech-btn button {
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
-    line-height: 28px;
-    letter-spacing: 1.5px;
-  }
+      width: 60px;
+      height: 60px;
+      font-size: 1.5rem;
+      line-height: 28px;
+      letter-spacing: 1.5px;
+    }
   }
 
   @media (max-width: 550px) {
-
     background-image: url(/technology/background-technology-mobile.jpg);
-    
+
     .title {
       font-size: 1rem;
       line-height: 19px;
@@ -179,7 +176,7 @@ const TechContainer = styled.main`
       margin: 0;
       text-align: center;
     }
-    
+
     .tech-container {
       margin: 2rem 0 0;
     }
@@ -190,16 +187,15 @@ const TechContainer = styled.main`
     }
 
     .tech-btn button {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-    line-height: 18px;
-    letter-spacing: 1px;
-  }
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+      line-height: 18px;
+      letter-spacing: 1px;
+    }
 
-  .tech-data {
+    .tech-data {
       margin-top: 1.625rem;
-      
     }
 
     .tech-data h2 {
@@ -207,54 +203,53 @@ const TechContainer = styled.main`
       font-size: 14px;
       line-height: 17px;
       letter-spacing: 2.3625px;
-  }
+    }
 
-  .tech-data h1 {
-    font-size: 1.5rem;
-    line-height: 1.75rem;
-  }
+    .tech-data h1 {
+      font-size: 1.5rem;
+      line-height: 1.75rem;
+    }
 
-  .tech-data p {
-    font-size: 15px;
-    line-height: 1.5625rem;
-    color: var(--secondary-color);
-    margin-top: 1rem;
-    max-width: 327px; 
+    .tech-data p {
+      font-size: 15px;
+      line-height: 1.5625rem;
+      color: var(--secondary-color);
+      margin-top: 1rem;
+      max-width: 327px;
+    }
   }
-
-  }
-`
+`;
 
 const Technology = () => {
-  const [tech] = useState(technology)
-  const [value, setValue] = useState(0)
-  const [width, setWidth] = useState(window.innerWidth)
+  const [tech] = useState(technology);
+  const [value, setValue] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize)
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleResize = () => {
-    setWidth(window.innerWidth)
-  }
+    setWidth(window.innerWidth);
+  };
 
-  const { description, images, name } = tech[value]
+  const { description, images, name } = tech[value];
 
   return (
     <TechContainer>
       <Header />
-      <p className='title'>
-        <span className='span-title'>03</span> space launch 101
+      <p className="title">
+        <span className="span-title">03</span> space launch 101
       </p>
-      <section className='tech-container'>
-        <div className='tech-btn'>
+      <section className="tech-container">
+        <div className="tech-btn">
           {tech.map((item, index) => (
             <button
-              className={index === value ? 'active' : undefined}
+              className={index === value ? "active" : undefined}
               key={index}
               onClick={() => setValue(index)}
             >
@@ -262,12 +257,12 @@ const Technology = () => {
             </button>
           ))}
         </div>
-        <div className='tech-data'>
+        <div className="tech-data">
           <h2>the terminology...</h2>
           <h1>{name}</h1>
           <p>{description}</p>
         </div>
-        <div className='tech-images'>
+        <div className="tech-images">
           <img
             src={width > 1115 ? images.portrait : images.landscape}
             alt={name}
@@ -275,7 +270,7 @@ const Technology = () => {
         </div>
       </section>
     </TechContainer>
-  )
-}
+  );
+};
 
-export default Technology
+export default Technology;
