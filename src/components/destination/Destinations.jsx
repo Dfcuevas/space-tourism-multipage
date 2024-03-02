@@ -29,7 +29,7 @@ const DestinationsContainer = styled.div`
   .destination-container {
     max-width: 1047px;
     display: flex;
-    margin: 64px auto 0;
+    margin: 36px auto 0;
     justify-content: space-between;
     align-items: center;
   }
